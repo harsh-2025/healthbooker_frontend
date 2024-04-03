@@ -66,14 +66,23 @@ function Login() {
     }
   };
 
+  const handleDemoUser = () => {
+    // Fill in the email and password fields with demo user credentials
+    setFormDetails({
+      email: "a@gmail.com",
+      password: "asdfasdf",
+    });
+    // Submit the form
+    // document.getElementById("signin-button").click();
+
+    formSubmit();
+  };
+
   return (
     <section className="register-section flex-center">
       <div className="register-container flex-center">
         <h2 className="form-heading">Sign In</h2>
-        <form
-          onSubmit={formSubmit}
-          className="register-form"
-        >
+        <form onSubmit={formSubmit} className="register-form">
           <input
             type="email"
             name="email"
@@ -90,19 +99,21 @@ function Login() {
             value={formDetails.password}
             onChange={inputChange}
           />
+          <button type="submit" id="signin-button" className="btn form-btn">
+            Sign in
+          </button>
+          {/* Button for demo user */}
           <button
-            type="submit"
-            className="btn form-btn"
+            type="button"
+            className="btn form-btn demo-btn"
+            onClick={handleDemoUser}
           >
-            sign in
+            Demo User
           </button>
         </form>
         <p>
           Not a user?{" "}
-          <NavLink
-            className="login-link"
-            to={"/register"}
-          >
+          <NavLink className="login-link" to={"/register"}>
             Register
           </NavLink>
         </p>
